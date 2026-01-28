@@ -25,7 +25,7 @@ pub struct ModuleInfo<'a> {
 	pub details: &'a str,
 }
 
-pub fn parse_module(text: &str) -> anyhow::Result<ModuleInfo> {
+pub fn parse_module(text: &str) -> anyhow::Result<ModuleInfo<'_>> {
 	let Some((mut header, mut details)) = text.split_once("-----") else {
 		bail!("could not split module header");
 	};
